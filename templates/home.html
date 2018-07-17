@@ -1,0 +1,32 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">logout</a></p>
+  <input  onclick="myFunc()" type="button" class="btn btn-primary" id = "btn"  value="rooms">
+{% else %}
+  <p>You are not logged in</p>
+  <a type="button" class="btn btn-primary" href="{% url 'login' %}">login</a>
+  <input  onclick="myFunction()" type="button" class="btn btn-primary" id = "buttom_id"  value="signup">
+{% endif %}
+
+
+<Script>
+    function myFunction() {
+
+        window.location.pathname = '/accounts/signup/';
+
+    }
+    function myFunc() {
+
+        window.location.pathname = '/accounts/';
+
+    }
+
+
+</Script>
+{% endblock %}
